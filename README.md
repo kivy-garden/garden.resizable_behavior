@@ -66,14 +66,14 @@ res_button.set_cursor_mode(1) # Enabled
 
 Change the size of the cursor
 ```python
-res_button.set_cursor_size(int)
+res_button.set_cursor_size(width_int, height_int)
 ```
 
 Change cursor icons
 ```python
 res_button.set_cursor_icons(
-    hor,       # The horizontal icon
-    deg45,     # The 45 degree clockwise icon
-    deg90,     # The 90 degree clockwise icon
-    deg135)    # The 135 degree clockwise icon
+    'imag/1.png',     # The horizontal icon
+    'imag/2.png',     # The 45 degree clockwise icon
+    'imag/3.png',     # The 90 degree clockwise icon
+    'imag/4.png')     # The 135 degree clockwise icon
 ```
