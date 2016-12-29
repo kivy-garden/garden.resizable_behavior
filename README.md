@@ -25,8 +25,8 @@ class ResizableButton(ResizableBehavior, Button):
 Enable / disable resizing of a specific side in kwargs or after
 ```python
 res_button = ResizableButton(
-    resizable_left=False,
-    resizable_right=True,
+    resizable_left = False,
+    resizable_right = True,
     resizable_up = False,
     resizable_down = True)
 
@@ -50,10 +50,9 @@ res_button.resizable_border = 100
 
 Offset the resizable_border (by default it is inside the widget) in kwargs or after     
 ```python
+res_button = ResizableButton(resizable_border_offset=100)
+
 #A value of resizable_border * 0.5 will center it on the edge of the ResizableButton
-
-res_button = ResizableButton(resizable_border_offset=res_button.resizable_border * 0.5)
-
 res_button.resizable_border_offset = res_button.resizable_border * 0.5
 ```
 
