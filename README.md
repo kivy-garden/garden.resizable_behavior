@@ -1,6 +1,14 @@
 # Resizable Behavior
 
 A behavior for kivy widgets that allows them to be resized by touching/clickin on a corner and dragging.    
+     
+     
+[Youtube demostration video](https://www.youtube.com/watch?v=n9v36gHA-Ps)     
+      
+      
+Below is also a **screenshot of the included resizable widget application**.     
+     
+     
 ![ScreenShot](https://raw.github.com/kivy-garden/garden.resizable_behavior/master/doc/screenshot.png)
 
 ## Usage    
@@ -11,8 +19,7 @@ from kivy.garden.resizable_behavior import ResizableBehavior
 from kivy.uix.Button import Button
 
 class ResizableButton(ResizableBehavior, Button):
-    def __init__(self, **kwargs):
-        super(ResizableButton, self).__init__(**kwargs)
+    pass
 ```
 
 Enable / disable resizing of a specific side
