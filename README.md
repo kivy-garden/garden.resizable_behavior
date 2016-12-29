@@ -3,7 +3,7 @@
 A behavior for kivy widgets that allows them to be resized by touching/clickin on a corner and dragging.    
      
      
-[Youtube demostration video](https://www.youtube.com/watch?v=n9v36gHA-Ps)     
+[Youtube demostration video](https://www.youtube.com/watch?v=8VqLV4McmK0)     
       
       
 Below is also a **screenshot of the included resizable widget application**.     
@@ -22,8 +22,14 @@ class ResizableButton(ResizableBehavior, Button):
     pass
 ```
 
-Enable / disable resizing of a specific side
+Enable / disable resizing of a specific side in kwargs or after
 ```python
+res_button = ResizableButton(
+    resizable_left = False,
+    resizable_right = True,
+    resizable_up = False,
+    resizable_down = True)
+
 res_button.resizable_left = False
 res_button.resizable_right = True
 res_button.resizable_up = False
@@ -38,19 +44,26 @@ res_button.resize_lock = True
 Adjust the size of resizable border in kwargs or after
 ```python
 res_button = ResizableButton(resizable_border=8999)
+
 res_button.resizable_border = 100
 ```
 
 Offset the resizable_border (by default it is inside the widget) in kwargs or after     
 ```python
-#A value of resizable_border * 0.5 will center it on the edge of the ResizableButton
+res_button = ResizableButton(resizable_border_offset=100)
 
-res_button = ResizableButton(resizable_border_offset=res_button.resizable_border * 0.5)
+#A value of resizable_border * 0.5 will center it on the edge of the ResizableButton
 res_button.resizable_border_offset = res_button.resizable_border * 0.5
 ```
 
 Set min and max sizes in kwargs or after     
 ```python
+res_button = ResizableButton(
+    min_resizable_width = 100,
+    min_resizable_height = 101,
+    max_resizable_width = 102,
+    max_resizable_height = 103)
+    
 res_button.min_resizable_width = 100
 res_button.min_resizable_height = 101
 res_button.max_resizable_width = 102
