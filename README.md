@@ -85,8 +85,8 @@ res_button.set_cursor_size(width_int, height_int)
 Change cursor icons
 ```python
 res_button.set_cursor_icons(
-    'imag/1.png',     # The horizontal icon
-    'imag/2.png',     # The 45 degree clockwise icon
-    'imag/3.png',     # The 90 degree clockwise icon
-    'imag/4.png')     # The 135 degree clockwise icon
+    'img/1.png',     # The horizontal icon
+    'img/2.png',     # The 45 degree clockwise icon
+    'img/3.png',     # The 90 degree clockwise icon
+    'img/4.png')     # The 135 degree clockwise icon
 ```
