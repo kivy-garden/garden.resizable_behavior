@@ -26,7 +26,7 @@ class ResizableLabel(ResizableBehavior, Label):
         super(ResizableLabel, self).__init__(**kwargs)
         self.background = Rectangle(pos=self.pos, size=self.size)
         blue2 = InstructionGroup()
-        color = from_rgb(160, 130, 68)
+        color = from_rgb(160, 65, 70)
         blue2.add(Color(*color))
         blue2.add(self.background)
         self.canvas.before.add(blue2)
@@ -41,7 +41,7 @@ class ResizableLabel(ResizableBehavior, Label):
 
 class ResizableButton(ResizableBehavior, Button):
     background_normal = ''
-    background_color = from_rgb(160, 130, 68)
+    background_color = from_rgb(160, 65, 70)
 
 
 class ResizableSideBar(ResizableBehavior, BoxLayout):
