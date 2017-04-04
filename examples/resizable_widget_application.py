@@ -10,10 +10,10 @@ from kivy.core.window import Window
 from kivy.properties import ListProperty
 from kivy.graphics import *
 from kivy.clock import Clock
-
 from os import sys, path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
-from behaviors.resize import ResizableBehavior
+from behaviors import ResizableBehavior
+
 
 class ResizableLabel(ResizableBehavior, Label):
     def __init__(self, **kwargs):
@@ -127,6 +127,7 @@ class ResizableWidgetDemo(FloatLayout):
         self.stack2.bind(size=lambda obj, val: setattr(
             self.stack3, 'height', self.height - val[1]))
 
+
 class ResizableWidgetDemoApp(App):
     def build(self):
         return ResizableWidgetDemo()
@@ -136,6 +137,7 @@ class ResizableWidgetDemoApp(App):
 
     def on_resume(self):
         pass
+
 
 if __name__ == '__main__':
     ResizableWidgetDemoApp().run()
