@@ -94,7 +94,6 @@ class ResizableWidgetDemo(FloatLayout):
         sidelabel = ResizableLabel(
             text='Reizable button \nin resizable sidebar',
             resizable_down = True,
-            dont_move=True,
             size_hint=(1, None),
             height=cm(1),
         )
