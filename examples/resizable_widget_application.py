@@ -13,6 +13,12 @@ from kivy.clock import Clock
 from os import sys, path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from behaviors import ResizableBehavior
+from kivy.lang import Builder
+
+
+def from_rgb(r, g, b):
+    r, g, b = float(r), float(g), float(b)
+    return [r / 255.0,g / 255.0,b / 255.0, 1]
 
 
 class ResizableLabel(ResizableBehavior, Label):
@@ -20,7 +26,8 @@ class ResizableLabel(ResizableBehavior, Label):
         super(ResizableLabel, self).__init__(**kwargs)
         self.background = Rectangle(pos=self.pos, size=self.size)
         blue2 = InstructionGroup()
-        blue2.add(Color(0.5, 0.5, 0.5, 1))
+        color = from_rgb(160, 130, 68)
+        blue2.add(Color(*color))
         blue2.add(self.background)
         self.canvas.before.add(blue2)
         self.bind(size=lambda obj, val: setattr(
@@ -33,7 +40,8 @@ class ResizableLabel(ResizableBehavior, Label):
 
 
 class ResizableButton(ResizableBehavior, Button):
-    pass
+    background_normal = ''
+    background_color = from_rgb(160, 130, 68)
 
 
 class ResizableSideBar(ResizableBehavior, BoxLayout):
@@ -51,7 +59,8 @@ class ResizableSideBar(ResizableBehavior, BoxLayout):
         self.bind(size=lambda obj, val: setattr(
             self.background, 'pos', self.pos))
         blue = InstructionGroup()
-        blue.add(Color(0.6, 0.6, 0.7, 1))
+        color = from_rgb(144, 175, 197)
+        blue.add(Color(*color))
         blue.add(self.background)
         self.canvas.before.add(blue)
 
@@ -79,10 +88,12 @@ class ResizableWidgetDemo(FloatLayout):
         self.stack1 = StackLayout(
             size_hint=(None, 1), width=self.width-cm(4.5))
         self.stack2 = ResizableStackLayout(
-            [0.7, 0.2, 0.2, 1], size_hint=(1, None),
+            # [0.8, 0.33, 0.33, 1], size_hint=(1, None),
+            # height=cm(5), resizable_down=True)
+            from_rgb(51, 107, 135), size_hint=(1, None),
             height=cm(5), resizable_down=True)
         self.stack3 = ResizableStackLayout(
-            [0.2, 0.2, 0.7, 1], size_hint=(1, None))
+            from_rgb(42, 49, 50), size_hint=(1, None))
         rbutton = ResizableButton(
             text='down, left resizable button \n in resizable stacklayout',
             resizable_right = True,
@@ -138,5 +149,13 @@ class ResizableWidgetDemoApp(App):
         pass
 
 
+Builder.load_string('''
+<ResizableButton>:
+    canvas.after:
+        Color:
+            rgba: 0.3, 0.25, 0.2, 1
+        Line:
+            points: self.x, self.y, self.x, self.top, self.right, self.top, self.right, self.y, self.x, self.y
+''')
 if __name__ == '__main__':
     ResizableWidgetDemoApp().run()

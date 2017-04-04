@@ -12,7 +12,7 @@ path = os.path.split(os.path.realpath(__file__))[0]
 
 class CursorModalView(ModalView):
     '''
-    The CursorModalView is the parent of ResizableCursor
+    The CursorModalView is the parent of ResizeCursor
     '''
 
     last_opened = 0.0
@@ -23,7 +23,7 @@ class CursorModalView(ModalView):
         self.size_hint = (None, None)
         self.background_color = (0, 0, 0, 0)
         self.pos = (-9999, -9999)
-        self.cursor = ResizableCursor()
+        self.cursor = ResizeCursor()
         self.add_widget(self.cursor)
         self.open()
 
@@ -56,9 +56,9 @@ class CursorModalView(ModalView):
         pass
 
 
-class ResizableCursor(Widget):
+class ResizeCursor(Widget):
     '''
-    The ResizableCursor is the mouse cursor
+    The ResizeCursor is the mouse cursor
     '''
 
     hidden = BooleanProperty(True)
@@ -98,7 +98,7 @@ class ResizableCursor(Widget):
     source = StringProperty('')
 
     def __init__(self, **kwargs):
-        super(ResizableCursor, self).__init__(**kwargs)
+        super(ResizeCursor, self).__init__(**kwargs)
         self.size_hint = (None, None)
         self.pos_hint = (None, None)
         self.source = ''

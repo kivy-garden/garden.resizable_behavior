@@ -250,7 +250,6 @@ class ResizableBehavior(object):
         Clock.schedule_once(_modalview.put_on_top, 0)
         self.oldpos, self.oldsize = [], []
 
-
     def on_enter_resizable(self):
         self.cursor.hidden = False
 
