@@ -6,19 +6,19 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.metrics import cm
-from kivy.core.window import Window
 from kivy.properties import ListProperty
 from kivy.graphics import *
-from kivy.clock import Clock
 from os import sys, path
+
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+
 from behaviors import ResizableBehavior
 from kivy.lang import Builder
 
 
 def from_rgb(r, g, b):
     r, g, b = float(r), float(g), float(b)
-    return [r / 255.0,g / 255.0,b / 255.0, 1]
+    return [r / 255.0, g / 255.0, b / 255.0, 1]
 
 
 class ResizableLabel(ResizableBehavior, Label):
@@ -52,7 +52,8 @@ class ResizableSideBar(ResizableBehavior, BoxLayout):
 
     def after_init(self):
         for x in range(1, 10):
-            lbl = Label(size_hint=(1, None), height=(cm(1)), text='X '+str(x))
+            lbl = Label(size_hint=(1, None), height=(cm(1)),
+                        text='X ' + str(x))
             self.add_widget(lbl)
         self.bind(size=lambda obj, val: setattr(
             self.background, 'size', self.size))
@@ -67,6 +68,7 @@ class ResizableSideBar(ResizableBehavior, BoxLayout):
 
 class ResizableStackLayout(ResizableBehavior, StackLayout):
     bgcl = ListProperty([1, 1, 1, 1])
+
     def __init__(self, bgcl, **kwargs):
         super(ResizableStackLayout, self).__init__(**kwargs)
         self.bgcl = bgcl
@@ -86,7 +88,7 @@ class ResizableWidgetDemo(FloatLayout):
         self.sidebar = ResizableSideBar(
             size_hint=(None, 1), width=cm(4.5), orientation='vertical')
         self.stack1 = StackLayout(
-            size_hint=(None, 1), width=self.width-cm(4.5))
+            size_hint=(None, 1), width=self.width - cm(4.5))
         self.stack2 = ResizableStackLayout(
             # [0.8, 0.33, 0.33, 1], size_hint=(1, None),
             # height=cm(5), resizable_down=True)
@@ -96,30 +98,30 @@ class ResizableWidgetDemo(FloatLayout):
             from_rgb(42, 49, 50), size_hint=(1, None))
         rbutton = ResizableButton(
             text='down, left resizable button \n in resizable stacklayout',
-            resizable_right = True,
-            resizable_down = True,
+            resizable_right=True,
+            resizable_down=True,
             size_hint=(None, None),
             size=(cm(6), cm(4)),
             on_release=lambda x: print('ON_RELASE()')
         )
         sidelabel = ResizableLabel(
             text='Reizable button \nin resizable sidebar',
-            resizable_down = True,
+            resizable_down=True,
             size_hint=(1, None),
             height=cm(1),
         )
         r4sides = ResizableButton(
             text='4 sides resizable,\n floating button\n with size limit',
-            resizable_right = True,
-            resizable_left = True,
-            resizable_up = True,
-            resizable_down = True,
+            resizable_right=True,
+            resizable_left=True,
+            resizable_up=True,
+            resizable_down=True,
             size_hint=(None, None),
             min_resizable_width=cm(3),
             min_resizable_height=cm(3),
             max_resizable_width=cm(10),
             max_resizable_height=cm(10),
-            resizable_border_offset = 14,
+            resizable_border_offset=14,
             size=(cm(6), cm(6)),
             on_release=lambda x: print('ON_RELASE()')
         )
@@ -155,7 +157,11 @@ Builder.load_string('''
         Color:
             rgba: 0.3, 0.25, 0.2, 1
         Line:
-            points: self.x, self.y, self.x, self.top, self.right, self.top, self.right, self.y, self.x, self.y
+            points:
+                self.x, self.y, self.x, self.top, \
+                self.right, self.top, self.right, \
+                self.y, self.x, self.y
 ''')
+
 if __name__ == '__main__':
     ResizableWidgetDemoApp().run()

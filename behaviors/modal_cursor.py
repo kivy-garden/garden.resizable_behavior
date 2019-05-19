@@ -4,7 +4,7 @@ from kivy.uix.modalview import ModalView
 from kivy.graphics import Rectangle
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
-from kivy.metrics import dp, cm
+from kivy.metrics import dp
 from time import time
 import os
 path = os.path.split(os.path.realpath(__file__))[0]
@@ -25,14 +25,13 @@ class CursorModalView(ModalView):
         self.pos = (-9999, -9999)
         self.cursor = ResizeCursor()
         self.add_widget(self.cursor)
-        self.open()
+        self._cursor_has_already_added = False
 
     def open(self, *largs):
-        self._window = self._search_window()
-        if not self._window:
-            Logger.warning('ModalView: cannot open view, no window found.')
-            return
-        self._window.add_widget(self)
+        if not self._cursor_has_already_added:
+            from kivy.app import App
+            App.get_running_app().root.add_widget(self)
+            self._cursor_has_already_added = True
 
     def put_on_top(self, *args):
         self.dismiss()
